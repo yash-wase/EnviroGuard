@@ -8,6 +8,13 @@ __pycache__/
 dataset/output_*.png
 dataset/temp_*.csv
 
+# Dataset files (except master_training_dataset.csv)
+dataset/air_emission_data.csv
+dataset/compliance_data.csv
+dataset/liquid_effluent_data.csv
+dataset/production_operational_data.csv
+dataset/weather_data.csv
+
 # IDE
 .vscode/
 .idea/
