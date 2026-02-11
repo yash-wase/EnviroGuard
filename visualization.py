@@ -10,6 +10,8 @@ MODEL_DIR = "emission_model"
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(MODEL_DIR, exist_ok=True)
 
+TREND_FILE = os.path.join(DATA_DIR, "trend_history.csv")
+
 def plot_historical_vs_forecast(historical_df, forecast_results, industry_id, save=True):
     """Plot historical emissions vs forecast for a specific industry"""
     
@@ -245,3 +247,100 @@ def plot_industry_ranking(ranking_df, save=True):
 if __name__ == "__main__":
     print("Visualization module ready")
     print("Use individual plot functions to generate charts")
+
+
+def plot_mitigation_comparison(current_index, projected_index, industry_id, countermeasure, save=True):
+    """Plot current vs projected index after countermeasure"""
+    
+    fig, ax = plt.subplots(figsize=(10, 6))
+    
+    categories = ['Current', 'Projected']
+    values = [current_index, projected_index]
+    colors = ['#e74c3c' if current_index > 0.7 else '#f39c12', 
+              '#2ecc71' if projected_index < 0.4 else '#f39c12']
+    
+    bars = ax.bar(categories, values, color=colors, width=0.5)
+    
+    # Add improvement arrow
+    improvement_pct = ((current_index - projected_index) / current_index) * 100
+    arrow_y = max(values) * 0.5
+    ax.annotate('', xy=(1, projected_index), xytext=(0, current_index),
+                arrowprops=dict(arrowstyle='->', lw=2, color='green'))
+    ax.text(0.5, arrow_y, f'{improvement_pct:.1f}% improvement', 
+            ha='center', fontsize=12, fontweight='bold', color='green')
+    
+    ax.set_ylabel("Composite Emission Index")
+    ax.set_title(f"Mitigation Impact - Industry {industry_id}\n{countermeasure}")
+    ax.axhline(y=0.4, color='orange', linestyle='--', label='Moderate Threshold', linewidth=2)
+    ax.axhline(y=0.7, color='red', linestyle='--', label='Critical Threshold', linewidth=2)
+    ax.legend()
+    ax.grid(True, alpha=0.3, axis='y')
+    
+    # Add value labels on bars
+    for bar, val in zip(bars, values):
+        height = bar.get_height()
+        ax.text(bar.get_x() + bar.get_width()/2., height,
+                f'{val:.3f}', ha='center', va='bottom', fontweight='bold')
+    
+    plt.tight_layout()
+    
+    if save:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"output_mitigation_comparison_{industry_id}_{timestamp}.png"
+        plt.savefig(os.path.join(DATA_DIR, filename), dpi=150, bbox_inches='tight')
+        print(f"✓ Saved: {filename}")
+    
+    return fig
+
+def plot_trend_analysis(industry_id, save=True):
+    """Plot historical trend for an industry from trend_history.csv"""
+    
+    if not os.path.exists(TREND_FILE):
+        print("⚠ No trend history available")
+        return None
+    
+    trend = pd.read_csv(TREND_FILE)
+    trend = trend[trend["Industry_ID"] == industry_id]
+    
+    if len(trend) == 0:
+        print(f"⚠ No trend data for Industry {industry_id}")
+        return None
+    
+    trend["Date"] = pd.to_datetime(trend["Date"])
+    trend = trend.sort_values("Date")
+    
+    fig, ax = plt.subplots(figsize=(12, 6))
+    
+    ax.plot(trend["Date"], trend["Composite_Index"], marker='o', linewidth=2, 
+            markersize=6, color='#3498db', label='Composite Index')
+    
+    # Add trend arrow
+    if len(trend) >= 2:
+        first_val = trend["Composite_Index"].iloc[0]
+        last_val = trend["Composite_Index"].iloc[-1]
+        trend_direction = "↑ Worsening" if last_val > first_val else "↓ Improving"
+        trend_color = 'red' if last_val > first_val else 'green'
+        
+        ax.text(0.02, 0.98, trend_direction, transform=ax.transAxes,
+                fontsize=14, fontweight='bold', color=trend_color,
+                verticalalignment='top', bbox=dict(boxstyle='round', 
+                facecolor='white', alpha=0.8))
+    
+    ax.axhline(y=0.4, color='orange', linestyle='--', label='Moderate Threshold', linewidth=2)
+    ax.axhline(y=0.7, color='red', linestyle='--', label='Critical Threshold', linewidth=2)
+    ax.set_xlabel("Date")
+    ax.set_ylabel("Composite Emission Index")
+    ax.set_title(f"Emission Trend Analysis - Industry {industry_id}")
+    ax.legend()
+    ax.grid(True, alpha=0.3)
+    plt.xticks(rotation=45)
+    
+    plt.tight_layout()
+    
+    if save:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"output_trend_analysis_{industry_id}_{timestamp}.png"
+        plt.savefig(os.path.join(DATA_DIR, filename), dpi=150, bbox_inches='tight')
+        print(f"✓ Saved: {filename}")
+    
+    return fig

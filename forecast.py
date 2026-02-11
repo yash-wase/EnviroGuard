@@ -57,10 +57,11 @@ def forecast_emissions(dataset_filename):
         latest_df["COD_Lag_1"] = df.groupby("Industry_ID")["COD"].shift(1).iloc[-len(latest_df):]
         
         # Fill NaN lags with current values
-        latest_df["CO2_Lag_1"].fillna(latest_df["CO2"], inplace=True)
-        latest_df["SO2_Lag_1"].fillna(latest_df["SO2"], inplace=True)
-        latest_df["BOD_Lag_1"].fillna(latest_df["BOD"], inplace=True)
-        latest_df["COD_Lag_1"].fillna(latest_df["COD"], inplace=True)
+        latest_df = latest_df.copy()
+        latest_df["CO2_Lag_1"] = latest_df["CO2_Lag_1"].fillna(latest_df["CO2"])
+        latest_df["SO2_Lag_1"] = latest_df["SO2_Lag_1"].fillna(latest_df["SO2"])
+        latest_df["BOD_Lag_1"] = latest_df["BOD_Lag_1"].fillna(latest_df["BOD"])
+        latest_df["COD_Lag_1"] = latest_df["COD_Lag_1"].fillna(latest_df["COD"])
     
     # Encode categorical
     latest_df = pd.get_dummies(latest_df, columns=["Industry_Type", "Fuel_Type"], drop_first=True)

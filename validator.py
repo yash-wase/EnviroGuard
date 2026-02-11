@@ -25,11 +25,11 @@ def validate_and_clean(df, training_stats=None):
     # Check required columns
     missing_cols = [col for col in required_cols if col not in df.columns]
     if missing_cols:
-        print(f"⚠ Missing required columns: {missing_cols}")
+        print(f"Warning: Missing required columns: {missing_cols}")
     
     # Convert Date
     if "Date" in df.columns:
-        df["Date"] = pd.to_datetime(df["Date"], dayfirst=True, errors='coerce')
+        df["Date"] = pd.to_datetime(df["Date"], format='%Y-%m-%d', errors='coerce')
     
     # Impute missing numeric values with median
     numeric_cols = df.select_dtypes(include=[np.number]).columns
@@ -83,9 +83,9 @@ def validate_and_clean(df, training_stats=None):
 def align_features(df, feature_columns):
     """Align dataframe columns to match training feature order"""
     
-    # Get current columns (excluding targets and date)
+    # Get current columns (excluding targets, date, and ID)
     current_cols = [col for col in df.columns if col not in 
-                    ["CO2", "SO2", "BOD", "COD", "TSS", "pH", "Date"]]
+                    ["CO2", "SO2", "BOD", "COD", "TSS", "pH", "Date", "Industry_ID"]]
     
     # Add missing columns with zeros
     for col in feature_columns:
@@ -96,6 +96,19 @@ def align_features(df, feature_columns):
     feature_df = df[feature_columns]
     
     return feature_df
+
+def classify_dataset_quality(confidence_score):
+    """
+    Classify dataset quality based on confidence score
+    
+    Returns: High Reliability, Moderate, or Low
+    """
+    if confidence_score > 80:
+        return "High Reliability"
+    elif confidence_score >= 60:
+        return "Moderate"
+    else:
+        return "Low"
 
 if __name__ == "__main__":
     # Test validator

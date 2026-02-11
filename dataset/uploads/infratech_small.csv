@@ -1,0 +1,4 @@
+Industry_ID,Industry_Type,Fuel_Type,Date,Production_Volume,Operating_Hours,Capacity_Utilization,Treatment_Efficiency,Equipment_Age,Humidity,Audit_Score,CO2,SO2,BOD,COD
+INFRATECH,Cement,Coal,2023-06-01,5900,24,0.88,0.82,9,72,89,1240,20.0,7.6,13.2
+INFRATECH,Cement,Coal,2023-07-01,6100,24,0.9,0.84,9,74,91,1280,20.7,7.9,13.8
+INFRATECH,Cement,Coal,2023-08-01,6300,24,0.92,0.86,9,76,92,1330,21.5,8.2,14.4

@@ -18,7 +18,7 @@ def train_models(dataset_filename):
     
     # Load dataset
     df = pd.read_csv(os.path.join(DATA_DIR, dataset_filename))
-    df["Date"] = pd.to_datetime(df["Date"], dayfirst=True)
+    df["Date"] = pd.to_datetime(df["Date"], format='%Y-%m-%d')
     df = df.sort_values("Date")
     
     # Remove leakage features

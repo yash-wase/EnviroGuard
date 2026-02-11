@@ -5,3 +5,6 @@ scikit-learn
 matplotlib
 shap
 joblib
+fastapi
+uvicorn
+python-multipart

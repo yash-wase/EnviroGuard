@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Upload</title>
+</head>
+<body>
+    <h1>EnviroGuard Upload Test</h1>
+    <form id="uploadForm">
+        <input type="file" id="fileInput" accept=".csv" />
+        <button type="submit">Upload</button>
+    </form>
+    <div id="status"></div>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const fileInput = document.getElementById('fileInput');
+            const statusDiv = document.getElementById('status');
+            const resultDiv = document.getElementById('result');
+            
+            if (!fileInput.files[0]) {
+                statusDiv.innerHTML = '<p style="color: red;">Please select a file</p>';
+                return;
+            }
+            
+            const formData = new FormData();
+            formData.append('dataset', fileInput.files[0]);
+            
+            statusDiv.innerHTML = '<p style="color: blue;">Uploading... Please wait (this may take 30-60 seconds)</p>';
+            resultDiv.innerHTML = '';
+            
+            try {
+                const response = await fetch('http://localhost:8000/api/predict', {
+                    method: 'POST',
+                    body: formData,
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.success) {
+                    statusDiv.innerHTML = '<p style="color: green;">✅ Upload successful!</p>';
+                    resultDiv.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                } else {
+                    statusDiv.innerHTML = '<p style="color: red;">❌ Upload failed</p>';
+                    resultDiv.innerHTML = '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                }
+            } catch (error) {
+                statusDiv.innerHTML = '<p style="color: red;">❌ Error: ' + error.message + '</p>';
+                resultDiv.innerHTML = '<p>Make sure backend is running at http://localhost:8000</p>';
+            }
+        });
+    </script>
+</body>
+</html>

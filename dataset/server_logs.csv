@@ -1,0 +1,19 @@
+Timestamp,Endpoint,Industry_ID,Alert_Level,Confidence,Response_Time,Status,Error
+2026-02-12 00:57:16,/api/health,,,,,success,
+2026-02-12 01:04:12,/api/predict,,,,0.022s,error,Prediction failed: [Errno 2] No such file or directory: 'dataset\\infratech_sample.csv'
+2026-02-12 01:04:21,/api/predict,,,,0.006s,error,Prediction failed: [Errno 2] No such file or directory: 'dataset\\infratech_sample.csv'
+2026-02-12 01:04:22,/api/predict,,,,0.006s,error,Prediction failed: [Errno 2] No such file or directory: 'dataset\\infratech_sample.csv'
+2026-02-12 01:06:10,/api/predict,,,,0.024s,error,Prediction failed: [Errno 2] No such file or directory: 'dataset\\infratech_small.csv'
+2026-02-12 01:06:17,/api/predict,,,,0.006s,error,Prediction failed: [Errno 2] No such file or directory: 'dataset\\infratech_small.csv'
+2026-02-12 01:09:00,/api/predict,99.0,Low,100.0,36.148s,success,
+2026-02-12 01:11:00,/api/predict,,,,0.019s,error,Prediction failed: [Errno 2] No such file or directory: 'dataset\\infratech_small.csv'
+2026-02-12 01:12:06,/api/predict,,,,0.006s,error,Prediction failed: [Errno 2] No such file or directory: 'dataset\\infratech_small.csv'
+2026-02-12 01:14:19,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'dataset\\infratech_small.csv'
+2026-02-12 01:15:58,/api/predict,,,,0.083s,error,"Prediction failed: DataFrame.dtypes for data must be int, float, bool or category. When categorical type is supplied, the experimental DMatrix parameter`enable_categorical` must be set to `True`.  Invalid columns:Industry_ID: object"
+2026-02-12 01:22:52,/api/predict,,Low,90.0,1.379s,success,
+2026-02-12 01:23:21,/api/simulate,,,,0.003s,error,Simulation failed: [Errno 2] No such file or directory: 'dataset\\infratech_small.csv'
+2026-02-12 01:23:32,/api/simulate,,,,0.003s,error,Simulation failed: [Errno 2] No such file or directory: 'dataset\\infratech_small.csv'
+2026-02-12 01:23:34,/api/ranking,,,,0.007s,success,
+2026-02-12 01:23:34,/api/ranking,,,,0.008s,success,
+2026-02-12 01:23:45,/api/guidelines,,,,,success,
+2026-02-12 01:23:45,/api/guidelines,N/A,N/A,N/A,N/A,success,None
