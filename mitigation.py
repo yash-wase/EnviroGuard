@@ -6,9 +6,24 @@ from forecast import forecast_emissions
 
 # Directory setup
 DATA_DIR = "dataset"
+UPLOAD_DIR = "dataset/uploads"
 MODEL_DIR = "emission_model"
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(MODEL_DIR, exist_ok=True)
+
+def get_dataset_path(filename):
+    """Get full path to dataset file, checking uploads first"""
+    # Check in uploads directory first
+    upload_path = os.path.join(UPLOAD_DIR, filename)
+    if os.path.exists(upload_path):
+        return upload_path
+    
+    # Check in main dataset directory
+    dataset_path = os.path.join(DATA_DIR, filename)
+    if os.path.exists(dataset_path):
+        return dataset_path
+    
+    raise FileNotFoundError(f"Dataset file '{filename}' not found")
 
 def project_countermeasure_impact(dataset_filename, industry_id, primary_driver):
     """
@@ -23,8 +38,20 @@ def project_countermeasure_impact(dataset_filename, industry_id, primary_driver)
         }
     """
     
-    # Load dataset
-    df = pd.read_csv(os.path.join(DATA_DIR, dataset_filename))
+    # Load dataset using proper path resolution
+    file_path = get_dataset_path(dataset_filename)
+    
+    # Try reading CSV with different formats
+    try:
+        df = pd.read_csv(file_path)
+    except:
+        try:
+            df = pd.read_csv(file_path, sep=';')
+        except:
+            try:
+                df = pd.read_csv(file_path, encoding='latin-1')
+            except:
+                df = pd.read_csv(file_path, sep=';', encoding='latin-1')
     
     # Get baseline forecast
     baseline_results, _, _ = forecast_emissions(dataset_filename)

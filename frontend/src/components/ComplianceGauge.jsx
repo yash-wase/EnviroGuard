@@ -4,18 +4,21 @@ import AlertBadge from './AlertBadge';
 import ConfidenceBadge from './ConfidenceBadge';
 
 const ComplianceGauge = ({ compositeIndex, alertLevel, confidence, regulatoryCategory }) => {
-  const percentage = (compositeIndex * 100).toFixed(1);
+  // Add null checks and default values
+  const safeCompositeIndex = compositeIndex || 0;
+  const safeConfidence = confidence || 0;
+  const percentage = (safeCompositeIndex * 100).toFixed(1);
   
   const getColor = () => {
-    if (compositeIndex < 0.3) return '#22c55e'; // green
-    if (compositeIndex < 0.6) return '#eab308'; // yellow
-    if (compositeIndex < 0.8) return '#f97316'; // orange
+    if (safeCompositeIndex < 0.3) return '#22c55e'; // green
+    if (safeCompositeIndex < 0.6) return '#eab308'; // yellow
+    if (safeCompositeIndex < 0.8) return '#f97316'; // orange
     return '#ef4444'; // red
   };
 
   const data = [
-    { value: compositeIndex * 100 },
-    { value: 100 - compositeIndex * 100 },
+    { value: safeCompositeIndex * 100 },
+    { value: 100 - safeCompositeIndex * 100 },
   ];
 
   return (

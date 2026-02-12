@@ -7,9 +7,24 @@ from validator import validate_and_clean, align_features
 
 # Directory setup
 DATA_DIR = "dataset"
+UPLOAD_DIR = "dataset/uploads"
 MODEL_DIR = "emission_model"
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(MODEL_DIR, exist_ok=True)
+
+def get_dataset_path(filename):
+    """Get full path to dataset file, checking uploads first"""
+    # Check in uploads directory first
+    upload_path = os.path.join(UPLOAD_DIR, filename)
+    if os.path.exists(upload_path):
+        return upload_path
+    
+    # Check in main dataset directory
+    dataset_path = os.path.join(DATA_DIR, filename)
+    if os.path.exists(dataset_path):
+        return dataset_path
+    
+    raise FileNotFoundError(f"Dataset file '{filename}' not found")
 
 def forecast_emissions(dataset_filename):
     """
@@ -17,8 +32,20 @@ def forecast_emissions(dataset_filename):
     Auto-detects whether to use lag-based or cold-start model
     """
     
-    # Load dataset
-    df = pd.read_csv(os.path.join(DATA_DIR, dataset_filename))
+    # Load dataset using proper path resolution
+    file_path = get_dataset_path(dataset_filename)
+    
+    # Try reading CSV with different formats
+    try:
+        df = pd.read_csv(file_path)
+    except:
+        try:
+            df = pd.read_csv(file_path, sep=';')
+        except:
+            try:
+                df = pd.read_csv(file_path, encoding='latin-1')
+            except:
+                df = pd.read_csv(file_path, sep=';', encoding='latin-1')
     
     # Load training stats
     training_stats = joblib.load(os.path.join(MODEL_DIR, "training_stats.pkl"))
@@ -45,11 +72,15 @@ def forecast_emissions(dataset_filename):
     # Load feature columns
     feature_columns = joblib.load(os.path.join(MODEL_DIR, "feature_columns.pkl"))
     
+    # If using cold-start model, remove lag features from expected columns
+    if not use_lag:
+        feature_columns = [col for col in feature_columns if not col.endswith('_Lag_1')]
+    
     # Extract latest row per industry
     df = df.sort_values("Date")
     latest_df = df.groupby("Industry_ID").tail(1).reset_index(drop=True)
     
-    # Generate lag features if using lag model
+    # Generate lag features ONLY if using lag model
     if use_lag and has_emissions:
         latest_df["CO2_Lag_1"] = df.groupby("Industry_ID")["CO2"].shift(1).iloc[-len(latest_df):]
         latest_df["SO2_Lag_1"] = df.groupby("Industry_ID")["SO2"].shift(1).iloc[-len(latest_df):]

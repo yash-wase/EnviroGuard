@@ -16,4 +16,158 @@ Timestamp,Endpoint,Industry_ID,Alert_Level,Confidence,Response_Time,Status,Error
 2026-02-12 01:23:34,/api/ranking,,,,0.007s,success,
 2026-02-12 01:23:34,/api/ranking,,,,0.008s,success,
 2026-02-12 01:23:45,/api/guidelines,,,,,success,
-2026-02-12 01:23:45,/api/guidelines,N/A,N/A,N/A,N/A,success,None
+2026-02-12 01:23:45,/api/guidelines,,,,,success,
+2026-02-12 01:53:30,/api/guidelines,,,,,success,
+2026-02-12 01:53:30,/api/guidelines,,,,,success,
+2026-02-12 01:53:38,/api/predict,,,,0.027s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:39,/api/predict,,,,0.009s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:40,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:41,/api/predict,,,,0.009s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:42,/api/predict,,,,0.009s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:42,/api/predict,,,,0.010s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:43,/api/predict,,,,0.009s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:43,/api/predict,,,,0.009s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:43,/api/predict,,,,0.009s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:43,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:43,/api/predict,,,,0.007s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:43,/api/predict,,,,0.010s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:44,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:44,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:44,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:44,/api/predict,,,,0.010s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:44,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:45,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:45,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:45,/api/predict,,,,0.009s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:46,/api/predict,,,,0.010s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:46,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:46,/api/predict,,,,0.009s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:46,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:46,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:47,/api/predict,,,,0.009s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:47,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:47,/api/predict,,,,0.010s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:47,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:48,/api/predict,,,,0.009s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:48,/api/predict,,,,0.009s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:48,/api/predict,,,,0.010s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:49,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:49,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:49,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:50,/api/predict,,,,0.007s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:50,/api/predict,,,,0.010s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:50,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:50,/api/predict,,,,0.008s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:51,/api/predict,,,,0.012s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:51,/api/predict,,,,0.009s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:51,/api/predict,,,,0.009s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:53:51,/api/predict,,,,0.009s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:55:49,/api/predict,,,,0.013s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:55:50,/api/predict,,,,0.013s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:55:51,/api/predict,,,,0.010s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:55:58,/api/predict,,,,0.030s,error,Prediction failed: [Errno 2] No such file or directory: 'emission_model\\training_stats.pkl'
+2026-02-12 01:58:01,/api/predict,,Low,90.0,0.862s,success,
+2026-02-12 01:58:34,/api/predict,,Low,100.0,9.721s,success,
+2026-02-12 02:03:07,/api/health,,,,,success,
+2026-02-12 07:53:15,/api/health,,,,,success,
+2026-02-12 07:56:02,/api/predict,,Low,90.0,1.460s,success,
+2026-02-12 07:56:28,/api/ranking,,,,0.006s,success,
+2026-02-12 07:56:28,/api/ranking,,,,0.008s,success,
+2026-02-12 07:56:56,/api/predict,,Low,90.0,1.243s,success,
+2026-02-12 07:57:04,/api/guidelines,,,,,success,
+2026-02-12 07:57:04,/api/guidelines,,,,,success,
+2026-02-12 07:57:17,/api/ranking,,,,0.007s,success,
+2026-02-12 07:57:17,/api/ranking,,,,0.008s,success,
+2026-02-12 07:58:53,/api/guidelines,,,,,success,
+2026-02-12 07:58:53,/api/guidelines,,,,,success,
+2026-02-12 08:00:01,/api/ranking,,,,0.006s,success,
+2026-02-12 08:00:16,/api/guidelines,,,,,success,
+2026-02-12 08:00:16,/api/ranking,,,,0.007s,success,
+2026-02-12 08:00:16,/api/guidelines,,,,,success,
+2026-02-12 08:00:16,/api/ranking,,,,0.004s,success,
+2026-02-12 08:00:19,/api/ranking,,,,0.007s,success,
+2026-02-12 08:00:19,/api/ranking,,,,0.006s,success,
+2026-02-12 08:00:22,/api/guidelines,,,,,success,
+2026-02-12 08:00:22,/api/guidelines,,,,,success,
+2026-02-12 08:05:21,/api/predict,,Low,90.0,1.260s,success,
+2026-02-12 08:05:30,/api/ranking,,,,0.007s,success,
+2026-02-12 08:05:30,/api/ranking,,,,0.006s,success,
+2026-02-12 08:05:51,/api/ranking,,,,0.004s,success,
+2026-02-12 08:05:51,/api/ranking,,,,0.005s,success,
+2026-02-12 08:06:17,/api/ranking,,,,0.005s,success,
+2026-02-12 08:06:17,/api/ranking,,,,0.006s,success,
+2026-02-12 08:06:20,/api/simulate,,,,0.003s,error,Simulation failed: [Errno 2] No such file or directory: 'dataset\\infratech_small.csv'
+2026-02-12 08:10:24,/api/predict,,Low,90.0,1.330s,success,
+2026-02-12 08:10:33,/api/ranking,,,,0.005s,success,
+2026-02-12 08:10:33,/api/ranking,,,,0.004s,success,
+2026-02-12 08:10:45,/api/ranking,,,,0.005s,success,
+2026-02-12 08:10:45,/api/ranking,,,,0.008s,success,
+2026-02-12 08:10:46,/api/guidelines,,,,,success,
+2026-02-12 08:10:46,/api/guidelines,,,,,success,
+2026-02-12 08:10:48,/api/ranking,,,,0.006s,success,
+2026-02-12 08:10:49,/api/ranking,,,,0.005s,success,
+2026-02-12 08:10:56,/api/simulate,,,,0.005s,error,Simulation failed: [Errno 2] No such file or directory: 'dataset\\infratech_small.csv'
+2026-02-12 08:14:57,/api/simulate,,,,0.216s,success,
+2026-02-12 08:15:11,/api/ranking,,,,0.016s,success,
+2026-02-12 08:15:11,/api/ranking,,,,0.004s,success,
+2026-02-12 08:17:37,/api/ranking,,,,0.007s,success,
+2026-02-12 08:17:37,/api/ranking,,,,0.004s,success,
+2026-02-12 08:23:26,/api/predict,,Low,90.0,1.462s,success,
+2026-02-12 08:25:29,/api/predict,,Low,90.0,1.255s,success,
+2026-02-12 08:36:29,/api/simulate,,,,0.193s,success,
+2026-02-12 08:36:47,/api/simulate,,,,0.200s,success,
+2026-02-12 08:36:56,/api/ranking,,,,0.014s,success,
+2026-02-12 08:36:56,/api/ranking,,,,0.006s,success,
+2026-02-12 08:37:03,/api/guidelines,,,,,success,
+2026-02-12 08:37:03,/api/guidelines,,,,,success,
+2026-02-12 09:09:01,/api/ranking,,,,0.007s,success,
+2026-02-12 09:09:01,/api/ranking,,,,0.004s,success,
+2026-02-12 09:09:08,/api/ranking,,,,0.004s,success,
+2026-02-12 09:09:08,/api/ranking,,,,0.004s,success,
+2026-02-12 09:09:10,/api/guidelines,,,,,success,
+2026-02-12 09:09:10,/api/guidelines,,,,,success,
+2026-02-12 10:00:34,/api/predict,,,,0.139s,error,"Prediction failed: ""['Fuel_Type'] not in index"""
+2026-02-12 10:00:36,/api/predict,,,,0.077s,error,"Prediction failed: ""['Fuel_Type'] not in index"""
+2026-02-12 10:00:37,/api/predict,,,,0.079s,error,"Prediction failed: ""['Fuel_Type'] not in index"""
+2026-02-12 10:02:18,/api/predict,,,,0.033s,error,Prediction failed: Missing required columns: Fuel_Type
+2026-02-12 10:10:59,/api/predict,,,,0.106s,error,"Prediction failed: feature_names mismatch: ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas'] ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'CO2_Lag_1', 'SO2_Lag_1', 'BOD_Lag_1', 'COD_Lag_1', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas']
+training data did not have the following fields: COD_Lag_1, SO2_Lag_1, BOD_Lag_1, CO2_Lag_1"
+2026-02-12 10:11:29,/api/predict,,,,0.105s,error,"Prediction failed: feature_names mismatch: ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas'] ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'CO2_Lag_1', 'SO2_Lag_1', 'BOD_Lag_1', 'COD_Lag_1', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas']
+training data did not have the following fields: COD_Lag_1, SO2_Lag_1, BOD_Lag_1, CO2_Lag_1"
+2026-02-12 10:17:18,/api/predict,,,,0.115s,error,"Prediction failed: feature_names mismatch: ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas'] ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'CO2_Lag_1', 'SO2_Lag_1', 'BOD_Lag_1', 'COD_Lag_1', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas']
+training data did not have the following fields: BOD_Lag_1, SO2_Lag_1, COD_Lag_1, CO2_Lag_1"
+2026-02-12 10:18:06,/api/predict,,,,0.098s,error,"Prediction failed: feature_names mismatch: ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas'] ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'CO2_Lag_1', 'SO2_Lag_1', 'BOD_Lag_1', 'COD_Lag_1', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas']
+training data did not have the following fields: BOD_Lag_1, SO2_Lag_1, COD_Lag_1, CO2_Lag_1"
+2026-02-12 10:18:09,/api/predict,,,,0.070s,error,"Prediction failed: feature_names mismatch: ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas'] ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'CO2_Lag_1', 'SO2_Lag_1', 'BOD_Lag_1', 'COD_Lag_1', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas']
+training data did not have the following fields: BOD_Lag_1, SO2_Lag_1, COD_Lag_1, CO2_Lag_1"
+2026-02-12 10:18:59,/api/predict,,,,0.070s,error,"Prediction failed: feature_names mismatch: ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas'] ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'CO2_Lag_1', 'SO2_Lag_1', 'BOD_Lag_1', 'COD_Lag_1', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas']
+training data did not have the following fields: BOD_Lag_1, SO2_Lag_1, COD_Lag_1, CO2_Lag_1"
+2026-02-12 10:24:26,/api/predict,,,,0.087s,error,"Prediction failed: feature_names mismatch: ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas'] ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'CO2_Lag_1', 'SO2_Lag_1', 'BOD_Lag_1', 'COD_Lag_1', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas']
+training data did not have the following fields: CO2_Lag_1, BOD_Lag_1, SO2_Lag_1, COD_Lag_1"
+2026-02-12 10:25:09,/api/predict,,,,0.071s,error,"Prediction failed: feature_names mismatch: ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas'] ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'CO2_Lag_1', 'SO2_Lag_1', 'BOD_Lag_1', 'COD_Lag_1', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas']
+training data did not have the following fields: CO2_Lag_1, BOD_Lag_1, SO2_Lag_1, COD_Lag_1"
+2026-02-12 10:25:29,/api/predict,,,,0.070s,error,"Prediction failed: feature_names mismatch: ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas'] ['Industry_ID', 'Production_Volume', 'Capacity_Utilization', 'Operating_Hours', 'Equipment_Age', 'Scrubber_Installed', 'Past_Violation_Count', 'Inspection_Frequency', 'Penalty_Last_Year', 'Audit_Score', 'Temperature', 'Humidity', 'Wind_Speed', 'Rainfall', 'CO2_Lag_1', 'SO2_Lag_1', 'BOD_Lag_1', 'COD_Lag_1', 'Industry_Type_Chemical', 'Industry_Type_Pharma', 'Industry_Type_Steel', 'Industry_Type_Textile', 'Fuel_Type_Diesel', 'Fuel_Type_Gas']
+training data did not have the following fields: CO2_Lag_1, BOD_Lag_1, SO2_Lag_1, COD_Lag_1"
+2026-02-12 10:27:45,/api/predict,,,,2.058s,error,"Prediction failed: ""['Fuel_Type'] not in index"""
+2026-02-12 10:29:14,/api/predict,,Low,80.0,2.194s,success,
+2026-02-12 10:29:23,/api/ranking,,,,0.016s,success,
+2026-02-12 10:29:23,/api/ranking,,,,0.007s,success,
+2026-02-12 10:29:27,/api/simulate,,,,0.261s,success,
+2026-02-12 10:42:25,/api/predict,,Low,80.0,2.062s,success,
+2026-02-12 10:44:28,/api/ranking,,,,0.007s,success,
+2026-02-12 10:44:28,/api/ranking,,,,0.005s,success,
+2026-02-12 10:44:31,/api/guidelines,,,,,success,
+2026-02-12 10:44:31,/api/guidelines,,,,,success,
+2026-02-12 10:48:07,/api/guidelines,,,,,success,
+2026-02-12 10:48:07,/api/guidelines,,,,,success,
+2026-02-12 10:52:17,/api/predict,,Low,80.0,1.956s,success,
+2026-02-12 10:52:22,/api/ranking,,,,0.006s,success,
+2026-02-12 10:52:23,/api/ranking,,,,0.006s,success,
+2026-02-12 10:52:24,/api/guidelines,,,,,success,
+2026-02-12 10:52:24,/api/guidelines,,,,,success,
+2026-02-12 10:52:29,/api/simulate,,,,0.187s,success,
+2026-02-12 10:53:11,/api/simulate,,,,0.206s,success,
+2026-02-12 10:53:22,/api/ranking,,,,0.004s,success,
+2026-02-12 10:53:22,/api/ranking,,,,0.006s,success,
+2026-02-12 10:53:48,/api/ranking,,,,0.008s,success,
+2026-02-12 10:53:48,/api/ranking,N/A,N/A,N/A,0.006s,success,None

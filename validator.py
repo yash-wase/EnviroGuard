@@ -12,20 +12,51 @@ os.makedirs(MODEL_DIR, exist_ok=True)
 def validate_and_clean(df, training_stats=None):
     """
     Validate and clean input dataframe
-    Returns: cleaned_df, ood_flags, missing_ratio
+    Handles missing columns by filling with defaults
+    Returns: cleaned_df, ood_flags, missing_ratio, has_emissions
     """
     
-    # Required columns
-    required_cols = [
-        "Industry_ID", "Date", "Production_Volume", "Fuel_Type",
-        "Operating_Hours", "Equipment_Age", "Capacity_Utilization",
-        "Treatment_Efficiency", "Industry_Type"
-    ]
+    # Check if dataframe is empty
+    if df.empty:
+        print("Warning: Empty dataframe, creating sample row")
+        df = pd.DataFrame([{
+            "Industry_ID": 1,
+            "Date": pd.Timestamp.now().strftime('%Y-%m-%d'),
+            "Production_Volume": 1000.0,
+            "Fuel_Type": "Natural Gas",
+            "Operating_Hours": 8760.0,
+            "Equipment_Age": 5.0,
+            "Capacity_Utilization": 75.0,
+            "Treatment_Efficiency": 80.0,
+            "Industry_Type": "Manufacturing"
+        }])
     
-    # Check required columns
-    missing_cols = [col for col in required_cols if col not in df.columns]
-    if missing_cols:
-        print(f"Warning: Missing required columns: {missing_cols}")
+    # Required columns with default values
+    required_cols_defaults = {
+        "Industry_ID": 1,
+        "Date": pd.Timestamp.now().strftime('%Y-%m-%d'),
+        "Production_Volume": 1000.0,
+        "Fuel_Type": "Natural Gas",
+        "Operating_Hours": 8760.0,
+        "Equipment_Age": 5.0,
+        "Capacity_Utilization": 75.0,
+        "Treatment_Efficiency": 80.0,
+        "Industry_Type": "Manufacturing"
+    }
+    
+    # Add missing columns with default values
+    for col, default_val in required_cols_defaults.items():
+        if col not in df.columns:
+            print(f"Warning: Missing column '{col}', filling with default value: {default_val}")
+            if col == "Date":
+                df[col] = pd.to_datetime(default_val)
+            else:
+                df[col] = default_val
+    
+    # If Industry_ID is missing or all same, generate unique IDs
+    if "Industry_ID" not in df.columns or df["Industry_ID"].nunique() == 1:
+        df["Industry_ID"] = range(1, len(df) + 1)
+        print(f"Generated {len(df)} unique Industry IDs")
     
     # Convert Date
     if "Date" in df.columns:

@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
+import Topbar from './components/Topbar';
 import Landing from './pages/Landing';
 import Upload from './pages/Upload';
 import Dashboard from './pages/Dashboard';
@@ -12,6 +13,7 @@ function App() {
   return (
     <AppProvider>
       <Router>
+        <Topbar />
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/upload" element={<Upload />} />

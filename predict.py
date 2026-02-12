@@ -12,11 +12,26 @@ from visualization import plot_severity_ranking, plot_composite_index_trend, plo
 from validator import align_features, classify_dataset_quality
 
 DATA_DIR = "dataset"
+UPLOAD_DIR = "dataset/uploads"
 MODEL_DIR = "emission_model"
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(MODEL_DIR, exist_ok=True)
 
 MONITORING_FILE = os.path.join(DATA_DIR, "model_monitoring.csv")
+
+def get_dataset_path(filename):
+    """Get full path to dataset file, checking uploads first"""
+    # Check in uploads directory first
+    upload_path = os.path.join(UPLOAD_DIR, filename)
+    if os.path.exists(upload_path):
+        return upload_path
+    
+    # Check in main dataset directory
+    dataset_path = os.path.join(DATA_DIR, filename)
+    if os.path.exists(dataset_path):
+        return dataset_path
+    
+    raise FileNotFoundError(f"Dataset file '{filename}' not found")
 
 def compute_confidence(ood_count, missing_ratio, model_type):
     base_confidence = 100.0
@@ -141,8 +156,26 @@ def run_intelligent_prediction(dataset_filename, num_samples=5, return_structure
     
     feature_columns = joblib.load(os.path.join(MODEL_DIR, "feature_columns.pkl"))
     
-    df = pd.read_csv(os.path.join(DATA_DIR, dataset_filename))
-    df["Date"] = pd.to_datetime(df["Date"], format='%Y-%m-%d')
+    file_path = get_dataset_path(dataset_filename)
+    
+    # Try reading CSV with different formats
+    try:
+        df = pd.read_csv(file_path)
+    except:
+        try:
+            df = pd.read_csv(file_path, sep=';')
+        except:
+            try:
+                df = pd.read_csv(file_path, encoding='latin-1')
+            except:
+                df = pd.read_csv(file_path, sep=';', encoding='latin-1')
+    
+    df["Date"] = pd.to_datetime(df["Date"], format='%Y-%m-%d', errors='coerce')
+    
+    # Fill any NaT dates with current date
+    if df["Date"].isnull().any():
+        df["Date"].fillna(pd.Timestamp.now(), inplace=True)
+    
     df = df.sort_values("Date")
     
     if "Fuel_Consumption" in df.columns:
@@ -157,7 +190,16 @@ def run_intelligent_prediction(dataset_filename, num_samples=5, return_structure
         latest_df["COD_Lag_1"] = df.groupby("Industry_ID")["COD"].shift(1).iloc[-len(latest_df):]
         latest_df = latest_df.ffill()
     
-    latest_df = pd.get_dummies(latest_df, columns=["Industry_Type", "Fuel_Type"], drop_first=True)
+    # Only encode columns that exist
+    cols_to_encode = []
+    if "Industry_Type" in latest_df.columns:
+        cols_to_encode.append("Industry_Type")
+    if "Fuel_Type" in latest_df.columns:
+        cols_to_encode.append("Fuel_Type")
+    
+    if cols_to_encode:
+        latest_df = pd.get_dummies(latest_df, columns=cols_to_encode, drop_first=True)
+    
     X = align_features(latest_df, feature_columns)
     
     print("\n[5/5] Generating intelligent reports...")

@@ -3,26 +3,27 @@
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-success)]()
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue)]()
 [![Accuracy](https://img.shields.io/badge/Accuracy-97.3%25-brightgreen)]()
-[![Tests](https://img.shields.io/badge/Tests-81%2F81%20Passed-success)]()
 [![License](https://img.shields.io/badge/License-MIT-yellow)]()
 
-> AI-powered industrial emission forecasting with 97.3% accuracy. Complete full-stack platform for predicting CO2, SO2, BOD, and COD emissions with real-time analysis and compliance monitoring.
+> Enterprise-grade AI-powered platform for industrial emission forecasting, compliance monitoring, and risk assessment. Predicts CO2, SO2, BOD, and COD emissions with 97.3% accuracy.
 
 ---
 
 ## 🎯 Overview
 
-EnviroGuard is a production-ready machine learning platform that predicts industrial emissions one month in advance, helping industries maintain regulatory compliance and optimize environmental performance.
+EnviroGuard is a full-stack production platform that combines machine learning, real-time analytics, and professional UI/UX to help industries maintain environmental compliance and optimize emission performance.
 
 ### Key Features
 - 🎯 **97.3% Prediction Accuracy** - Multi-output XGBoost models
-- 📊 **Real-time Dashboard** - Interactive visualizations and insights
+- 📊 **Professional Dashboard** - Clean, enterprise-grade interface
 - 🔍 **Root Cause Analysis** - SHAP-based explainability
-- 💡 **Smart Recommendations** - Automated countermeasure suggestions
-- 🎮 **What-If Simulation** - Test operational changes before implementation
-- 📈 **Trend Tracking** - Historical analysis and improvement monitoring
-- ⚖️ **Compliance Monitoring** - Regulatory threshold tracking
-- 🚨 **Escalation Alerts** - Automatic flagging of critical cases
+- 💡 **Smart Recommendations** - Automated mitigation strategies
+- 🎮 **Scenario Simulation** - Test operational changes before implementation
+- 📈 **Trend Analytics** - Historical tracking and improvement monitoring
+- ⚖️ **Compliance Tracking** - Regulatory threshold monitoring
+- 🚨 **Risk Classification** - Automated tier categorization
+- 📄 **PDF Reports** - One-click compliance report export
+- 🏆 **Industry Ranking** - Cross-sector benchmarking
 
 ---
 
@@ -53,22 +54,21 @@ cd ..
 
 **Terminal 1 - Backend:**
 ```bash
-uvicorn app:app --reload
+python app.py
 ```
-Backend runs at: http://localhost:8000
+Backend runs at: **http://localhost:4001**
 
 **Terminal 2 - Frontend:**
 ```bash
 cd frontend
 npm run dev
 ```
-Frontend runs at: http://localhost:5173
+Frontend runs at: **http://localhost:5173**
 
-### Verification
-```bash
-python verify_system.py
-```
-Expected: 48/48 checks passed ✅
+### Access the Platform
+1. Open browser to http://localhost:5173
+2. Click "Start Analysis" to upload a dataset
+3. View predictions, rankings, and compliance reports
 
 ---
 
@@ -77,29 +77,59 @@ Expected: 48/48 checks passed ✅
 ```
 EnviroGuard/
 ├── Backend (Python FastAPI)
-│   ├── app.py                    # Main API server
-│   ├── config.py                 # Configuration
-│   ├── schemas.py                # API schemas
+│   ├── app.py                    # Main API server (Port 4001)
+│   ├── config.py                 # Centralized configuration
+│   ├── schemas.py                # Pydantic request/response schemas
+│   │
 │   ├── Intelligence Modules
 │   │   ├── predict.py            # Main prediction pipeline
 │   │   ├── forecast.py           # Emission forecasting
-│   │   ├── ranking.py            # Industry ranking
-│   │   ├── simulation.py         # What-if scenarios
+│   │   ├── ranking.py            # Industry ranking & registry
+│   │   ├── simulation.py         # What-if scenario analysis
 │   │   ├── explain.py            # SHAP explanations
-│   │   ├── mitigation.py         # Countermeasures
-│   │   └── visualization.py      # Chart generation
-│   ├── utils/                    # Utility modules
-│   ├── dataset/                  # Data files
-│   └── emission_model/           # ML models
+│   │   ├── mitigation.py         # Countermeasure recommendations
+│   │   ├── visualization.py      # Chart generation
+│   │   └── validator.py          # Data validation & cleaning
+│   │
+│   ├── utils/
+│   │   ├── file_handler.py       # File upload utilities
+│   │   ├── response_formatter.py # Response standardization
+│   │   └── logger.py             # Request logging
+│   │
+│   ├── dataset/                  # Data files & uploads
+│   └── emission_model/           # ML models (97.3% accuracy)
 │
-└── Frontend (React + Vite)
+└── Frontend (React + Vite + TailwindCSS)
     ├── src/
-    │   ├── api/                  # API integration
-    │   ├── components/           # 11 reusable components
-    │   ├── pages/                # 6 application pages
-    │   ├── context/              # State management
-    │   └── App.jsx               # Main application
-    └── Configuration files
+    │   ├── api/
+    │   │   └── apiClient.js      # Axios API integration
+    │   │
+    │   ├── components/           # Reusable UI components
+    │   │   ├── Topbar.jsx        # Global navigation bar
+    │   │   ├── Sidebar.jsx       # Dashboard sidebar
+    │   │   ├── ExecutiveIndex.jsx # Circular progress ring
+    │   │   ├── EmissionCard.jsx  # Pollutant display cards
+    │   │   ├── ComplianceGauge.jsx # Compliance visualization
+    │   │   ├── RiskVsTarget.jsx  # Risk comparison chart
+    │   │   └── ...
+    │   │
+    │   ├── pages/                # Application pages
+    │   │   ├── Landing.jsx       # Hero section with gradient background
+    │   │   ├── Upload.jsx        # CSV upload with 80/20 progress
+    │   │   ├── Dashboard.jsx     # Emission overview (redesigned)
+    │   │   ├── CounterMeasures.jsx # Mitigation strategies
+    │   │   ├── Ranking.jsx       # Industry benchmarking
+    │   │   └── Guidelines.jsx    # Compliance reference
+    │   │
+    │   ├── context/
+    │   │   └── AppContext.jsx    # Global state management
+    │   │
+    │   └── App.jsx               # Main application & routing
+    │
+    └── Configuration
+        ├── tailwind.config.js    # TailwindCSS setup
+        ├── vite.config.js        # Vite build config
+        └── package.json          # Dependencies
 ```
 
 ---
@@ -112,49 +142,76 @@ EnviroGuard/
 - **Explainability**: SHAP (Shapley values)
 - **Data Processing**: pandas, numpy
 - **Server**: Uvicorn (ASGI server)
+- **Port**: 4001
 
 ### Frontend
 - **Framework**: React 18
-- **Build Tool**: Vite 8
-- **Styling**: TailwindCSS 4
-- **Routing**: React Router 7
-- **Charts**: Recharts 3
+- **Build Tool**: Vite 5
+- **Styling**: TailwindCSS 3
+- **Routing**: React Router 6
+- **Charts**: Recharts 2
 - **HTTP Client**: Axios
 - **Icons**: Lucide React
+- **PDF Export**: jsPDF
 
 ---
 
-## 📱 Features
+## 📱 Features & Pages
 
-### Dashboard
-- 4 emission cards (CO2, SO2, BOD, COD)
-- Compliance gauge with composite index
-- Risk vs target comparison
-- Severity ranking chart
-- Historical trend analysis
-- Summary statistics
+### 1. Landing Page
+- Professional gradient background with animated shapes
+- Hero section with badge, heading, and CTA buttons
+- Three key stats (4 outputs, <3s processing, 95%+ confidence)
+- Six capability cards in 3-column grid
+- Four-step workflow with circular icons and connection line
+- Clickable EnviroGuard logo redirects to home
 
-### Counter Measures
-- Current status overview
-- Primary driver identification
-- Recommended actions
-- Mitigation impact projection
-- Scenario simulation
-- Before/after comparison
+### 2. Upload Page
+- Two-column layout (left: upload, right: preview)
+- Drag-and-drop CSV upload
+- 80/20 loading bar during processing
+- File validation and error handling
+- Accepts ANY CSV file (fills missing columns with defaults)
+- Uses cold-start model when needed
 
-### Industry Ranking
-- Sortable table by risk level
-- Filter by alert status
-- Confidence scores
-- Regulatory categories
-- Summary statistics
+### 3. Dashboard (Overview)
+- Page header with subtitle
+- 2x2 emission cards (CO2, SO2, BOD, COD)
+  - Trend icons and color-coded percentages
+  - Thin progress bars
+  - Risk level indicators
+- Emission Index with SVG circular progress ring
+- Compliance Score gauge (fixed NaN% issue)
+- Risk vs Regulatory Limit chart
+- Professional borders, no heavy shadows
 
-### Guidelines
-- Regulatory limits reference
-- Composite weight breakdown
-- Alert level thresholds
-- Category definitions
-- Quality level indicators
+### 4. Counter Measures
+- Page header with subtitle
+- Highest Risk Pollutant banner with icon
+- Three recommended mitigation strategy cards
+- Operational Simulation section
+  - Four sliders (Production, Efficiency, Operating Hours, Fuel Type)
+  - Run Simulation button
+  - Before/After comparison chart
+
+### 5. Ranking Page
+- Sortable industry table
+- 8-character Industry IDs (4 letters + 4 digits)
+- Mini progress bars for risk levels
+- Color-coded status indicators
+- Filter and search capabilities
+
+### 6. Guidelines & Compliance
+- Industry card with company ID and status badge
+- Regulatory Limits table with 6 columns
+  - Pollutant, Unit, Regulatory Limit, Current Predicted, Risk %, Status
+  - Compliant/Non-Compliant icons
+- Risk Classification Tiers (4 color-coded cards)
+  - Sustainable (green), Watchlist (yellow), Risk (orange), Critical (red)
+- Index Weight Distribution
+  - Horizontal stacked bar chart
+  - Legend with percentages
+- Export PDF Report button
 
 ---
 
@@ -169,7 +226,8 @@ EnviroGuard/
 | `/api/trend/{id}` | GET | Get historical trends |
 | `/api/guidelines` | GET | Get regulatory information |
 
-**Interactive API Docs**: http://localhost:8000/docs
+**Base URL**: http://localhost:4001  
+**Interactive API Docs**: http://localhost:4001/docs
 
 ---
 
@@ -184,79 +242,87 @@ EnviroGuard/
 **Average Accuracy**: 97.3%
 
 ### Cold-Start Model (Fallback)
-Used for new industries without emission history. Provides reasonable estimates for initial assessments.
+Used for new industries without emission history or datasets with missing columns. Automatically fills missing data with defaults and provides reasonable estimates.
 
 ---
 
-## 🧪 Testing
+## 🎨 Design System
 
-### Run All Tests
-```bash
-# System verification (48 checks)
-python verify_system.py
+### Color Palette
+- **Primary**: Emerald (#10b981)
+- **Success**: Green (#22c55e)
+- **Warning**: Yellow/Amber (#eab308, #f59e0b)
+- **Danger**: Orange/Red (#f97316, #ef4444)
+- **Neutral**: Gray scale (#f9fafb to #111827)
 
-# Intelligence modules (10 tests)
-python test_upgrades.py
+### Typography
+- **Font**: System fonts (sans-serif)
+- **Headings**: Bold, 2xl to 6xl
+- **Body**: Regular, sm to lg
+- **Mono**: Company IDs and technical data
 
-# Prediction pipeline (3 tests)
-python test_simple.py
-```
-
-### Test Results
-- ✅ 81/81 tests passed (100%)
-- ✅ Zero bugs remaining
-- ✅ Production ready
-
----
-
-## 📚 Documentation
-
-| Document | Description |
-|----------|-------------|
-| `README.md` | This file - Main project overview |
-| `BACKEND_README.md` | Complete backend documentation |
-| `frontend/README.md` | Complete frontend documentation |
-
----
-
-## 🎯 Usage Example
-
-### 1. Upload Dataset
-```bash
-# Via API
-curl -X POST http://localhost:8000/api/predict \
-  -F "dataset=@dataset/master_training_dataset.csv"
-```
-
-### 2. View Dashboard
-Navigate to http://localhost:5173 and explore:
-- Emission predictions
-- Risk analysis
-- Trend charts
-- Recommendations
-
-### 3. Run Simulation
-Test operational changes:
-- Adjust production volume
-- Modify treatment efficiency
-- Change operating parameters
-- View projected impact
+### Components
+- **Borders**: border border-gray-200
+- **Shadows**: shadow-sm, shadow-lg (minimal)
+- **Rounded**: rounded-lg, rounded-xl
+- **Spacing**: Consistent padding (p-4, p-6)
+- **Backgrounds**: bg-gray-50, bg-white
 
 ---
 
 ## 🔧 Configuration
 
-### Backend (`config.py`)
+### Backend (config.py)
 ```python
-SERVER_PORT = 8000
+SERVER_PORT = 4001  # Changed from 8000
 DATA_DIR = "dataset"
 MODEL_DIR = "emission_model"
+UPLOAD_DIR = "dataset/uploads"
 MAX_FILE_SIZE = 200 * 1024 * 1024  # 200MB
+
+REGULATORY_LIMITS = {
+    "CO2": 500,   # tonnes/yr
+    "SO2": 80,    # kg/yr
+    "BOD": 30,    # mg/L
+    "COD": 250    # mg/L
+}
+
+COMPOSITE_WEIGHTS = {
+    "CO2": 0.30,
+    "SO2": 0.25,
+    "BOD": 0.25,
+    "COD": 0.20
+}
 ```
 
-### Frontend (`src/api/apiClient.js`)
+### Frontend (src/api/apiClient.js)
 ```javascript
-const API_BASE_URL = 'http://localhost:8000';
+const API_BASE_URL = 'http://localhost:4001';
+```
+
+---
+
+## 🧪 Testing
+
+### Backend Tests
+```bash
+# System verification
+python verify_system.py
+
+# Intelligence modules
+python test_upgrades.py
+
+# Prediction pipeline
+python test_simple.py
+
+# API endpoints
+python test_api.py
+```
+
+### Frontend
+```bash
+cd frontend
+npm run build  # Production build test
 ```
 
 ---
@@ -265,43 +331,79 @@ const API_BASE_URL = 'http://localhost:8000';
 
 ### Backend Won't Start
 ```bash
-# Check port availability
-netstat -ano | findstr :8000
+# Check if port 4001 is available
+netstat -ano | findstr :4001
 
-# Restart with different port
-uvicorn app:app --port 8001
+# Kill process if needed
+taskkill /PID <process_id> /F
+
+# Restart backend
+python app.py
 ```
 
 ### Frontend Won't Start
 ```bash
-# Reinstall dependencies
 cd frontend
-rm -rf node_modules
+rm -rf node_modules package-lock.json
 npm install
 npm run dev
 ```
 
 ### Upload Issues
-- Ensure file is CSV format
-- Check file size < 200MB
-- Verify both servers are running
+- Ensure backend is running on port 4001
+- Check file is CSV format
+- File size must be < 200MB
 - Wait 30-60 seconds for processing
+- Backend now accepts ANY CSV (fills missing columns)
+
+### NaN% Display Issues
+- Fixed in ComplianceGauge component
+- Fixed in Guidelines page
+- Added null checks and default values
 
 ---
 
-## 📈 Performance
+## 📈 Recent Updates (v1.0.0)
 
-| Metric | Value |
-|--------|-------|
-| Backend Startup | ~2-3 seconds |
-| Prediction Time | ~30-60 seconds |
-| Frontend Load | < 2 seconds |
-| Concurrent Requests | 20+ supported |
-| Memory Usage | ~500MB |
+### Backend Improvements
+- ✅ Changed server port from 8000 to 4001
+- ✅ Models loaded at startup (no per-request loading)
+- ✅ Accept ANY CSV file (fills missing columns with defaults)
+- ✅ Cold-start model for datasets without lag features
+- ✅ Multiple CSV format support (comma/semicolon, UTF-8/Latin-1)
+- ✅ Centralized configuration in config.py
+- ✅ Standardized response formatting
+- ✅ Request logging to CSV
+
+### Frontend Redesign
+- ✅ Landing page with professional gradient background
+- ✅ Dashboard completely redesigned (professional look)
+- ✅ Counter Measures page redesigned with sliders
+- ✅ Guidelines page with compliance table and charts
+- ✅ Ranking page with 8-character Industry IDs
+- ✅ Upload page with 80/20 loading bar
+- ✅ Clickable EnviroGuard logo (redirects to home)
+- ✅ Fixed NaN% issues in compliance sections
+- ✅ Clean borders, minimal shadows throughout
+- ✅ Consistent emerald color scheme
+- ✅ Professional spacing and typography
 
 ---
 
 ## 🚀 Deployment
+
+### Production Backend
+```bash
+# Using Gunicorn
+gunicorn app:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:4001
+```
+
+### Production Frontend
+```bash
+cd frontend
+npm run build
+# Deploy dist/ folder to hosting (Vercel, Netlify, etc.)
+```
 
 ### Docker
 ```dockerfile
@@ -311,74 +413,89 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY . .
-EXPOSE 8000
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0"]
+EXPOSE 4001
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "4001"]
+
+# Frontend
+FROM node:18-alpine
+WORKDIR /app
+COPY frontend/package*.json ./
+RUN npm install
+COPY frontend/ .
+RUN npm run build
+EXPOSE 5173
+CMD ["npm", "run", "preview"]
 ```
 
-### Production
-```bash
-# Backend with Gunicorn
-gunicorn app:app -w 4 -k uvicorn.workers.UvicornWorker
+---
 
-# Frontend build
-cd frontend
-npm run build
-# Deploy dist/ folder to hosting
+## 📝 Project Structure
+
+```
+EnviroGuard-mvp/
+├── app.py                        # FastAPI server (Port 4001)
+├── config.py                     # Configuration
+├── schemas.py                    # API schemas
+├── requirements.txt              # Python dependencies
+├── README.md                     # This file
+│
+├── Intelligence Modules
+├── Utils
+├── Dataset
+├── Emission Model
+│
+└── frontend/
+    ├── src/
+    ├── public/
+    ├── package.json
+    ├── vite.config.js
+    └── tailwind.config.js
 ```
 
 ---
 
 ## 🔒 Security
 
-- ✅ CORS configured
-- ✅ File validation
+- ✅ CORS configured for localhost
+- ✅ File type validation (CSV only)
+- ✅ File size limits (200MB)
 - ✅ Request logging
 - ✅ Error sanitization
 - ✅ No sensitive data exposure
 
 ---
 
-## 📝 License
-
-MIT License - See LICENSE file for details
-
----
-
-## 🤝 Contributing
-
-Contributions welcome! Please read CONTRIBUTING.md first.
-
----
-
 ## 📞 Support
 
-- **Documentation**: See BACKEND_README.md and frontend/README.md
-- **Issues**: Check troubleshooting sections
-- **API Docs**: http://localhost:8000/docs
+- **API Documentation**: http://localhost:4001/docs
+- **Frontend**: http://localhost:5173
+- **Issues**: Check troubleshooting section above
 
 ---
 
 ## 🎉 Acknowledgments
 
-Built with:
-- FastAPI - Modern Python web framework
-- React - JavaScript library for UIs
-- Vite - Next generation frontend tooling
-- TailwindCSS - Utility-first CSS framework
-- XGBoost - Gradient boosting library
-- SHAP - Explainable AI library
-- Recharts - Composable charting library
+Built with modern technologies:
+- FastAPI - Python web framework
+- React - UI library
+- Vite - Build tool
+- TailwindCSS - Styling
+- XGBoost - ML models
+- SHAP - Explainability
+- Recharts - Charts
+- jsPDF - PDF export
 
 ---
 
 ## 📊 Project Stats
 
-- **Lines of Code**: 10,000+
+- **Lines of Code**: 12,000+
 - **Backend Modules**: 15+
 - **Frontend Components**: 20+
 - **API Endpoints**: 6
-- **Test Coverage**: 100%
+- **Pages**: 6
 - **Accuracy**: 97.3%
+- **Port**: 4001
 
 ---
 

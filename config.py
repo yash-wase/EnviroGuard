@@ -6,7 +6,7 @@ import os
 # Server Configuration
 SERVER_VERSION = "1.0.0"
 SERVER_HOST = "0.0.0.0"
-SERVER_PORT = 8000
+SERVER_PORT = 4001
 
 # Directory Configuration
 DATA_DIR = "dataset"

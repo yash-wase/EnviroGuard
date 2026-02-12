@@ -106,8 +106,8 @@ async def lifespan(app: FastAPI):
         model_store.models_loaded = False
     
     print("=" * 60)
-    print(f"Server ready at http://0.0.0.0:8000")
-    print(f"API docs at http://0.0.0.0:8000/docs")
+    print(f"Server ready at http://0.0.0.0:4001")
+    print(f"API docs at http://0.0.0.0:4001/docs")
     print("=" * 60)
     
     yield
@@ -193,12 +193,10 @@ async def predict(
         validate_csv_file(file_path)
         print(f"✓ CSV validated")
         
-        # Run prediction (reduced samples for faster response)
-        # Pass the filename with uploads/ prefix since file is in uploads folder
-        dataset_filename = f"uploads/{filename}"
+        # Run prediction - just pass the filename, modules will find it in uploads
         print(f"Starting prediction with 5 samples...")
         result = run_intelligent_prediction(
-            dataset_filename,
+            filename,
             num_samples=5,
             return_structured=True
         )
@@ -350,7 +348,14 @@ async def get_trend(industry_id: str):
         
         # Load trend data
         trend = pd.read_csv(TREND_FILE)
-        industry_trend = trend[trend["Industry_ID"] == industry_id]
+        
+        # Convert industry_id to appropriate type for comparison
+        try:
+            industry_id_numeric = int(industry_id)
+            industry_trend = trend[trend["Industry_ID"] == industry_id_numeric]
+        except ValueError:
+            # If conversion fails, try string comparison
+            industry_trend = trend[trend["Industry_ID"].astype(str) == industry_id]
         
         if len(industry_trend) == 0:
             raise HTTPException(
@@ -475,6 +480,6 @@ if __name__ == "__main__":
     uvicorn.run(
         "app:app",
         host="0.0.0.0",
-        port=8000,
+        port=4001,
         reload=True
     )

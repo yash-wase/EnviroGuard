@@ -11,7 +11,7 @@ const RiskVsTarget = ({ riskData }) => {
   }));
 
   return (
-    <div className="card">
+    <div className="bg-white rounded-xl shadow-lg p-6">
       <h3 className="text-lg font-semibold text-gray-900 mb-4">Risk vs Regulatory Limits</h3>
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={chartData}>

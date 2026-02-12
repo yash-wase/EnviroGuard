@@ -93,8 +93,24 @@ def validate_csv_file(filepath: str) -> bool:
     """
     try:
         import pandas as pd
-        df = pd.read_csv(filepath, nrows=5)
-        return len(df) > 0
+        # Try reading with different encodings and separators
+        try:
+            df = pd.read_csv(filepath, nrows=5)
+        except:
+            # Try with different separator
+            try:
+                df = pd.read_csv(filepath, sep=';', nrows=5)
+            except:
+                # Try with different encoding
+                try:
+                    df = pd.read_csv(filepath, encoding='latin-1', nrows=5)
+                except:
+                    df = pd.read_csv(filepath, sep=';', encoding='latin-1', nrows=5)
+        
+        if len(df) == 0:
+            raise ValueError("CSV file is empty")
+        
+        return True
     except Exception as e:
         raise HTTPException(
             status_code=422,

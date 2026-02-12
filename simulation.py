@@ -10,7 +10,22 @@ from forecast import forecast_emissions
 from validator import align_features
 
 DATA_DIR = "dataset"
+UPLOAD_DIR = "dataset/uploads"
 MODEL_DIR = "emission_model"
+
+def get_dataset_path(filename):
+    """Get full path to dataset file, checking uploads first"""
+    # Check in uploads directory first
+    upload_path = os.path.join(UPLOAD_DIR, filename)
+    if os.path.exists(upload_path):
+        return upload_path
+    
+    # Check in main dataset directory
+    dataset_path = os.path.join(DATA_DIR, filename)
+    if os.path.exists(dataset_path):
+        return dataset_path
+    
+    raise FileNotFoundError(f"Dataset file '{filename}' not found")
 
 def run_simulation(dataset_filename, modifications):
     """
@@ -31,9 +46,27 @@ def run_simulation(dataset_filename, modifications):
     print("WHAT-IF SCENARIO SIMULATION")
     print("="*60)
     
-    # Load dataset
-    df = pd.read_csv(os.path.join(DATA_DIR, dataset_filename))
+    # Load dataset using proper path resolution
+    file_path = get_dataset_path(dataset_filename)
+    print(f"Loading dataset from: {file_path}")
+    
+    # Try reading CSV with different formats
+    try:
+        df = pd.read_csv(file_path)
+    except:
+        try:
+            df = pd.read_csv(file_path, sep=';')
+        except:
+            try:
+                df = pd.read_csv(file_path, encoding='latin-1')
+            except:
+                df = pd.read_csv(file_path, sep=';', encoding='latin-1')
+    
     df["Date"] = pd.to_datetime(df["Date"], format='%Y-%m-%d', errors='coerce')
+    
+    # Fill any NaT dates with current date
+    if df["Date"].isnull().any():
+        df["Date"].fillna(pd.Timestamp.now(), inplace=True)
     
     # Get baseline predictions
     print("\n[1/3] Computing baseline predictions...")
